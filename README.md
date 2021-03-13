@@ -23,7 +23,8 @@ plt.rc('figure', titlesize=30)  # fontsize of the figure title
 
 ```python
 def plot(*args,**kwargs):
-    data = kwargs.get("data")
+    data   = kwargs.get("data")
+    title  = kwargs.get('title',"RSA encryption time by security level")
     fig,ax = plt.subplots(figsize=(10,10))
     ax.set_xlabel("Security Level")
     ax.set_ylabel("Time (Miliseconds)")
@@ -32,7 +33,7 @@ def plot(*args,**kwargs):
     colors = ["blue","red","black"]
     for (color,label,level,data) in zip(colors,labels,SECURITY_LEVELS,data):
         ax.bar(level,height =data,width=1000,label=label,color=color)
-    ax.set_title("RSA encryption time by security level")
+    ax.set_title(title)
     ax.legend(bbox_to_anchor=(1.05, 1))
     
 def plott(*args,**kwargs):
@@ -70,10 +71,11 @@ encrypt = pdf[pcol[1]].to_numpy()
 ```
 
 # Grafica de decifrado
+Rendimiento del decifrado utilizando RSA con 3 niveles de seguridad.
 
 
 ```python
-plot(data=decrypt)
+plot(data=decrypt, title="RSA decryption time by security level")
 ```
 
 
@@ -83,6 +85,7 @@ plot(data=decrypt)
 
 
 # Grafica de cifrado
+Rendimiento de cifrado utilizando RSA con 3 niveles de seguridad, se muetran por separados los tiempos que requerieron las operaciones de cifrado y de generacion del par de llaves.
 
 
 ```python
@@ -107,7 +110,8 @@ plott(data1 =data0,data0=data1,title=title,labels1=labels0,labels0=labels1)
     
 
 
-# RSA Digital Signatures plots 
+# RSA Digital Signatures 
+Rendimiento de firmas digitales utilizando RSA 
 
 
 ```python
